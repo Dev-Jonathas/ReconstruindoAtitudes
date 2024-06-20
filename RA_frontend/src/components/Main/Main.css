@@ -1,0 +1,289 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto+Slab:wght@100..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+
+body {
+ background-color: #fffff1;
+ 
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 20px;
+ 
+}
+.texto1 h1, .secao-inferior h1, .secao-inferior p{
+  font-family: 'Lobster', cursive;
+  font-size: 40px;
+  color: #3d3d3d;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.texto1 {
+  flex: 1;
+  padding: 50px; /* Reduzido de 200px para 50px */
+  text-align: left;
+  margin: 100px;
+ 
+}
+
+.texto1 p, .conteudo-textual p, .imagens p{
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  color: #011b53;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+}
+
+.imagem {
+  flex: 1;
+  text-align: left;
+}
+
+.imagem img {
+  max-width: 100%;
+  height: auto;
+}
+
+.secao-inferior {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 20px;
+ 
+}
+
+.texto-meio {
+  padding: 10px;
+  text-align: center;
+  align-items: center;
+  margin: 40px auto; /* Centrando horizontalmente */
+}
+
+.conteudo-textual {
+  flex: 1;
+  text-align: center;
+  margin-top: 40px; /* Reduzido de 70px para 40px */
+}
+
+.tituloM {
+  margin-bottom: 10px;
+}
+
+.botoes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 150px; /* Reduzido de 400px para 40px */
+  margin-top: 40px; /* Reduzido de 80px para 40px */
+  margin-bottom: 40px; /* Reduzido de 80px para 40px */
+  padding-left:800px; /* Removido padding-left */
+}
+
+.botaoMain {
+  padding: 20px 20px; /* Reduzido o padding */
+  font-size: 16px;
+  border: 2px solid #000000;
+  border-radius: 20px;
+  background-color: #00356d;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.botaoMain:hover {
+  background-color: rgb(209, 133, 34);
+  color: #000000;
+}
+
+.imagens {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bloco img {
+  width: 100px;
+}
+
+.bloco {
+  margin: 150px; /* Reduzido de 120px para 40px */
+  text-align: center;
+  margin-top: 40px; /* Reduzido de 100px para 40px */
+  margin-bottom: 40px; /* Reduzido de 100px para 40px */
+  margin-left: 250px;
+  
+}
+
+.bloco p {
+  font-size: 15px;
+  margin-top: 20px; /* Reduzido de 30px para 20px */
+}
+
+/* Atualização para responsividade */
+/* Media query para dispositivos móveis */
+@media screen and (max-width: 480px) {
+  .container {
+    margin-top: 60px;
+    padding: 10px; /* Reduz o padding para dispositivos móveis */
+  }
+
+  .texto1, .imagem, .secao-inferior, .conteudo-textual, .botoes, .imagens {
+    width: 100%; /* Define a largura total para todos os elementos */
+    margin: 0; /* Remove margens para ocupar todo o espaço disponível */
+    padding: 10px; /* Reduz o padding para dispositivos móveis */
+    text-align: center; /* Centraliza o conteúdo */
+  }
+
+  .texto1 h1, .secao-inferior h1, .secao-inferior p, .conteudo-textual h2, .conteudo-textual p, .texto-meio p {
+    font-size: 18px; /* Reduz o tamanho da fonte para dispositivos móveis */
+  }
+
+  .botaoMain {
+    margin-left: 800px; /* Redefine a margem esquerda para que os botões se alinhem lado a lado */
+  }
+
+  .botoes {
+    flex-direction: line; /* Muda a direção dos botões para vertical */
+    align-items: center; /* Centraliza os botões */
+  }
+
+
+  .bloco {
+    margin: 20px auto; /* Centraliza os blocos */
+  }
+
+  .bloco img {
+    width: 80px; /* Reduz o tamanho das imagens */
+  }
+
+  .bloco p {
+    font-size: 14px; /* Reduz o tamanho da fonte */
+    margin-top: 10px; /* Ajusta a margem superior */
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .texto1, .imagem, .conteudo-textual {
+    flex: none;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    margin: 0;
+  }
+  
+  .botoes {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+
+  }
+  
+  .botaoMain {
+    padding: 10px 30px;
+    font-size: 14px;
+    margin-right: 790px;
+  }
+  
+  .bloco {
+    margin: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .bloco p {
+    font-size: 14px;
+    margin-top: 5px;
+  }
+}
+
+/* Media query para dispositivos entre 481px e 768px */
+@media only screen and (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  .texto1, .imagem, .conteudo-textual {
+    padding: 10px;
+    text-align: center;
+  }
+
+  .botoes {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .botaoMain {
+    padding: 10px 30px;
+    font-size: 14px;
+  }
+
+  .bloco {
+    margin: 10px;
+  }
+
+  .bloco p {
+    font-size: 14px;
+    margin-top: 5px;
+  }
+}
+
+/* Atualização para tela 1444px */
+@media only screen and (min-width: 769px) and (max-width: 1444px) {
+  .container {
+    padding: 30px;
+  }
+  
+  .texto1, .conteudo-textual {
+    padding: 20px;
+  }
+  
+  .bloco {
+    margin-left: 140px;
+  }
+  .botoes {
+    margin-left: 300px;
+    padding: 20px 20px;
+    font-size: 16px;
+  }
+}
+
+/* Atualização para tela 1920px */
+@media only screen and (min-width: 1445px) {
+  .container {
+    padding: 50px;
+  }
+  
+  .texto1, .conteudo-textual {
+    padding: 30px;
+  }
+
+  .botoes {
+    margin-left: 600px;
+    padding: 20px 20px;
+    font-size: 16px;
+  }
+  
+  .bloco {
+    margin-left: 200px;
+  }
+}

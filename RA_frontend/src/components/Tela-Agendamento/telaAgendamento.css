@@ -1,0 +1,205 @@
+/* telaAgendamento.css */
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto+Slab:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Oswald:wght@200..700&display=swap');
+.mentor-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.mentor-container h2 {
+    color: #000000;
+    font-size: 30px;
+    margin-bottom: 20px;
+    font-family: 'Lobster', cursive;
+}
+
+.mentor-cards {
+    display: flex;
+    justify-content: center;
+    /* Alinhando os cards ao centro horizontalmente */
+    gap: 20px;
+    /* Espaço entre os cards */
+
+}
+
+.mentor-card {
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    position: relative; /* Certifique-se de que os cartões estejam no contexto correto */
+    z-index: 1; /* Valor padrão para os cartões */
+}
+
+.mentor-card:hover {
+    z-index: 5; /* Um valor menor que o do header para não cobrir o cabeçalho */
+    transform: translateY(-5px);
+}
+
+.mentor-card img {
+    width: 100%;
+    height: auto;
+}
+
+.mentor-info {
+    padding: 15px;
+
+}
+
+
+.mentor-info h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.mentor-info p {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.agendar-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #00356d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.agendar-button:hover {
+    background-color: #00509d;
+}
+
+.hour-select {
+    margin-top: 20px;
+  }
+  
+  .hour-select label {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .hour-select select {
+    width: 123px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+  }
+  
+  /* Estilo para as opções do select */
+  .hour-select select option {
+    padding: 8px;
+    font-size: 16px;
+    background-color: #fff;
+    color: #333;
+  }
+  
+  /* Estilo quando o select estiver em foco */
+  .hour-select select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+
+
+  /* Responsividade */
+  @media screen and (max-width: 390px), screen and (max-width: 414px) {
+    .mentor-container h2 {
+        font-size: 20px; /* Reduzindo o tamanho da fonte */
+        margin-top: 40px;
+    }
+
+    .mentor-cards {
+        margin-left: 5px; /* Reduzindo a margem */
+        margin-right: 5px; /* Reduzindo a margem */
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 15px; /* Ajustando o espaço entre os cards */
+    }
+
+    .mentor-card {
+        width: calc(50% - 10px); /* Ajustando a largura */
+        text-align: center;
+        padding: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .mentor-card img {
+        width: 100px; /* Reduzindo a largura da imagem */
+        height: 100px; /* Reduzindo a altura da imagem */
+        object-fit: cover;
+    }
+
+    .mentor-info h3 {
+        font-size: 15px; /* Reduzindo o tamanho da fonte */
+        margin-bottom: 5px;
+    }
+
+    .mentor-info p {
+        font-size: 10px; /* Reduzindo o tamanho da fonte */
+    }
+
+    .agendar-button {
+        margin-top: 15px; /* Ajustando a margem superior */
+        font-size: 10px; /* Reduzindo o tamanho da fonte */
+        width: 60%; /* Ajustando a largura */
+        margin-left: auto; /* Centralizando o botão */
+        margin-right: auto; /* Centralizando o botão */
+        margin-bottom: 20px; /* Ajustando a margem inferior */
+        position: relative; /* Garanta que o botão permaneça no fluxo do documento */
+        z-index: 10; /* Aumentando a prioridade do botão em relação a outros elementos */
+    }
+
+    .hour-select {
+        margin-top: 10px; /* Ajustando a margem superior */
+        margin-left: auto; /* Centralizando o select */
+        margin-right: auto; /* Centralizando o select */
+        width: 60%; /* Ajustando a largura */
+        font-size: 13px;
+    }
+
+    .hour-select select {
+        width: 100%; /* Ajustando a largura do select */
+    }
+
+    .mentor-container {
+        overflow-y: auto; /* Permite a rolagem vertical se o conteúdo for maior que a tela */
+        max-height: 100vh; /* Define a altura máxima para o contêiner */
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1444px) {
+    .mentor-card {
+        width: 350px;
+    }
+
+    .mentor-container h2 {
+        margin-bottom: 100px;
+        margin-top: 400px;
+    }
+}
+
+@media screen and (min-width: 1445px) {
+    .mentor-card {
+        width: 300px;
+    }
+}

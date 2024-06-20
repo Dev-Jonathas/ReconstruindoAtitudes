@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+header {
+  position: relative;
+  /* Certifique-se de que o header esteja posicionado corretamente */
+  z-index: 10;
+  /* Um valor alto o suficiente para estar acima dos cartões */
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgb(250, 249, 249);
+  /* Adicione uma cor de fundo para o cabeçalho se necessário */
+  box-shadow: 0 2px 5px rgba(59, 59, 59, 0.1);
+  /* Adicione uma sombra se desejar */
+
+}
+
+.logo {
+  margin-left: 20px;
+  /* Ajuste a margem conforme necessário para posicionar a logo */
+}
+
+.logo img {
+  width: 100px;
+  /* ajuste o tamanho conforme necessário */
+}
+
+.menu ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+
+}
+
+.menu ul li {
+  margin-left: 50px;
+  /* ajuste a margem conforme necessário */
+  margin-right: 50px;
+  font-size: 25px;
+
+
+
+}
+
+.menu ul li:first-child {
+  margin-left: -10%;
+
+}
+
+.link {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  font-family: 'Roboto Condensed', sans-serif;
+  /* Aplica a fonte ao container do header */
+
+}
+
+.link:hover {
+  text-decoration: none;
+  color: orange;
+
+}
+
+/* Media query para dispositivos móveis */
+@media screen and (max-width: 480px) {
+  .header-container {
+    padding: 5px 10px;
+    justify-content: flex-start;
+    /* Alinha os itens à esquerda */
+  }
+
+  .menu ul {
+    flex-direction: row;
+    /* Altera a direção do flex para linha */
+    justify-content: flex-end;
+    /* Move os itens para a direita */
+  }
+
+  .menu ul li {
+    margin: 0 10px;
+    /* Adiciona margem horizontal entre os itens */
+    font-size: 16px;
+  }
+
+  .logo {
+    margin-right: auto;
+    /* Move a logo para o canto esquerdo */
+  }
+}
+
+
+/* Media query para dispositivos móveis */
+/* Media query para dispositivos móveis */
+@media screen and  (max-width: 390px), screen and (max-width: 414px) {
+  .header-container {
+    align-items: flex-start;
+  }
+
+  .logo img {
+    width: 120px;
+    height: auto;
+    margin-right: 30px; /* Adiciona margem à direita para separar a imagem dos botões */
+  }
+
+  .menu {
+    display: flex;
+    align-items: center; /* Alinha os itens verticalmente */
+    width: 100%;
+  }
+
+  .menu ul {
+    flex: 1; /* Faz com que a lista ocupe todo o espaço restante */
+    display: flex;
+    justify-content: flex-end; /* Alinha os itens à direita */
+    margin-left: 10px; /* Adiciona margem à esquerda para separar os botões da imagem */
+  }
+
+  .menu ul li {
+    margin: 5px; /* Margem uniforme para os itens da lista */
+    font-size: 20px;
+  }
+}
+/* Media query para dispositivos tablets */
+@media screen and (max-width: 768px) {
+  .logo img {
+    width: 60px;
+    margin-left: 20px;
+  }
+
+  .menu {
+    margin-right: 30px;
+  }
+
+  .menu ul li {
+    margin-left: 30px;
+    font-size: 20px;
+  }
+}
+
+/* Media query para telas maiores que 1444px */
+@media screen and (min-width: 1445px) {
+  .header-container {
+    padding: 0 10%;
+    /* Adapta o espaçamento interno para telas maiores */
+  }
+
+  .menu ul li {
+    margin-left: 100px;
+    /* Ajusta a margem dos itens do menu para telas maiores */
+    margin-right: 100px;
+    font-size: 20px;
+    /* Ajusta o tamanho da fonte para telas maiores */
+  }
+ 
+}
