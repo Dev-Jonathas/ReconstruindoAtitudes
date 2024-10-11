@@ -25,11 +25,6 @@
     width: 300px;
   }
   
-  .cadastro-container img {
-    width: 150px;
-    margin-bottom: 20px;
-  }
-  
   .h1Cadastro {
     margin-bottom: 20px;
     color: #000000;
@@ -48,7 +43,6 @@
   .BLogin {
     display: inline-block;
     padding: 10px 20px;
-    margin-top: 10px;
     background-color: #007BFF;
     color: #ffffff;
     border: none;
@@ -60,3 +54,41 @@
     background-color: #0056b3;
   }
   
+  p{
+    font-family: "Fjalla One", sans-serif;
+    color: #000000;
+    display: inline-block;
+    margin-right: 2px;
+  }
+
+  .reg{
+    font-family: "Fjalla One", sans-serif;
+    color: #1a4468;
+  }
+  
+  .E-senha:hover, .reg:hover{
+    color: #0004ff;
+  }
+
+  .E-senha{
+    font-family: "Fjalla One", sans-serif;
+    color: #1a4468;
+    display: inline-block;
+    margin-right: 160px;
+    font-size: 10px;
+    margin-bottom: 10px;
+  }
+
+  .telas{
+    font-family: "Fjalla One", sans-serif;
+    color: #1a4468;
+    display: inline-block;
+    margin: 30px;
+    font-size: 13px;
+  }
+  .telas:hover{
+    color: #0004ff;
+  }
+
+ 
+

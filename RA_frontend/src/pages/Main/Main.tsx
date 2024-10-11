@@ -64,7 +64,7 @@ const Main: React.FC = () => {
           Conheça nossos Mentores
         </Link>
 
-        <Link to="/anamnese" className="botaoMain">
+        <Link to="/login" className="botaoMain">
           Realizar Anamnese
         </Link>
 

@@ -11,7 +11,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
+  /*position: fixed;*/
   top: 0;
   width: 100%;
   background-color: rgb(250, 249, 249);
@@ -22,7 +22,7 @@ header {
 }
 
 .logo {
-  margin-left: 20px;
+  margin-left: 40px;
   /* Ajuste a margem conforme necessário para posicionar a logo */
 }
 
@@ -130,32 +130,35 @@ header {
 }
 /* Media query para dispositivos tablets */
 @media screen and (max-width: 768px) {
-  .logo img {
-    width: 60px;
-    margin-left: 20px;
+  .header-container {
+    padding: 0 0%;
+    /* Adapta o espaçamento interno para telas maiores */
   }
 
-  .menu {
-    margin-right: 30px;
+  .logo img {
+    width: 60px;
+    margin-top: 10px;
   }
 
   .menu ul li {
-    margin-left: 30px;
-    font-size: 20px;
+    margin-left: 20px;
+    margin-right: 15px;
+    font-size: 18px;
+    margin-top: 20px;
   }
 }
 
 /* Media query para telas maiores que 1444px */
 @media screen and (min-width: 1445px) {
   .header-container {
-    padding: 0 10%;
+    padding: 0 0%;
     /* Adapta o espaçamento interno para telas maiores */
   }
 
   .menu ul li {
-    margin-left: 100px;
+    margin-left: 40px;
     /* Ajusta a margem dos itens do menu para telas maiores */
-    margin-right: 100px;
+    margin-right: 10px;
     font-size: 20px;
     /* Ajusta o tamanho da fonte para telas maiores */
   }

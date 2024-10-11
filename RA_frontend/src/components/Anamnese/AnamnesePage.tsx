@@ -1,6 +1,6 @@
 // AnamnesePage.js
 import React from 'react';
-import AnamneseForm from '../../components/Tela-Anamnese/AnamneseForm';
+import AnamneseForm from '../../pages/Tela-Anamnese/AnamneseForm';
 
 const AnamnesePage: React.FC = () => {
   return (
