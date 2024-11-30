@@ -1,33 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 
-header {
-  position: relative;
-  /* Certifique-se de que o header esteja posicionado corretamente */
-  z-index: 10;
-  /* Um valor alto o suficiente para estar acima dos cartões */
-}
 
 .header-container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  /*position: fixed;*/
-  top: 0;
-  width: 100%;
-  background-color: rgb(250, 249, 249);
-  /* Adicione uma cor de fundo para o cabeçalho se necessário */
-  box-shadow: 0 2px 5px rgba(59, 59, 59, 0.1);
-  /* Adicione uma sombra se desejar */
-
+  justify-content: space-between; /* Coloca a logo à esquerda e a caixa de perfil à direita */
+  align-items: center; /* Centraliza verticalmente */
+  border: 1px solid #cccccc;
+  background-color: #f8f8f8;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
-  margin-left: 40px;
-  /* Ajuste a margem conforme necessário para posicionar a logo */
+  display: flex;
+  align-items: center; /* Centraliza a logo verticalmente */
+  margin-left: 10px; /* Ajuste de margem para posicionar a logo */
 }
 
 .logo img {
   width: 100px;
+
   /* ajuste o tamanho conforme necessário */
 }
 
@@ -44,16 +35,12 @@ header {
   margin-left: 50px;
   /* ajuste a margem conforme necessário */
   margin-right: 50px;
-  font-size: 25px;
+  font-size: 18px;
 
 
 
 }
 
-.menu ul li:first-child {
-  margin-left: -10%;
-
-}
 
 .link {
   text-decoration: none;

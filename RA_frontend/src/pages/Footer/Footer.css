@@ -1,10 +1,11 @@
 footer {
   background-color: #00356d;
   text-align: center;
-  padding: 10px 0;
   bottom: 0;
   width: 100%;
-  z-index: 1000;
+  height: 40%;
+  position: relative;
+  left: 0;
 }
 
 .text-f{

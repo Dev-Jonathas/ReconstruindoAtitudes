@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url('../../assets/imgs/Blue\ Minimalist\ Linktree\ Background.png') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.cadastro-container {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 400px; /* Limita a largura máxima no desktop */
+  margin: 20px; /* Adiciona margem para espaçamento em telas pequenas */
+}
+
+.h1Cadastro {
+  margin-bottom: 20px;
+  color: #000000;
+  font-family: "Fjalla One", sans-serif;
+}
+
+.cadastro-container label {
+  display: block;
+  text-align: left;
+  margin-bottom: 5px;
+  color: #000000;
+  font-family: "Fjalla One", sans-serif;
+}
+
+.cadastro-container input,
+.select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.BLogin {
+  display: inline-block;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.BLogin:hover {
+  background-color: #0056b3;
+}
+
+p {
+  font-family: "Fjalla One", sans-serif;
+  color: #000000;
+  display: inline-block;
+  margin-right: 2px;
+}
+
+.reg {
+  font-family: "Fjalla One", sans-serif;
+  color: #1a4468;
+}
+
+.E-senha {
+  font-family: "Fjalla One", sans-serif;
+  color: #1a4468;
+  display: inline-block;
+  margin-right: 280px;
+  font-size: 10px;
+  margin-bottom: 20px;
+}
+
+.E-senha:hover,
+.reg:hover {
+  color: #0004ff;
+}
+
+.telas {
+  font-family: "Fjalla One", sans-serif;
+  color: #1a4468;
+  display: inline-block;
+  margin: 30px;
+  font-size: 13px;
+}
+
+.telas:hover {
+  color: #0004ff;
+}
+
+/* RESPONSIVIDADE PARA DISPOSITIVOS MÓVEIS */
+
+@media (max-width: 768px) {
+  .login-page {
+    padding: 20px; /* Adiciona um padding para ajustar a página em telas menores */
+  }
+
+  .cadastro-container {
+    width: 90%; /* Ocupa 90% da tela em dispositivos menores */
+    max-width: none; /* Remove a largura máxima para telas menores */
+    padding: 15px;
+  }
+
+  .E-senha {
+    margin-right: 0; /* Remove margem excessiva para telas pequenas */
+    text-align: right;
+    font-size: 12px; /* Aumenta um pouco o tamanho da fonte */
+  }
+
+  .BLogin {
+    padding: 12px 0;
+  }
+
+  .h1Cadastro {
+    font-size: 24px; /* Reduz o tamanho do título em telas pequenas */
+  }
+}
+
+@media (max-width: 480px) {
+  .cadastro-container {
+    padding: 10px;
+  }
+
+  .h1Cadastro {
+    font-size: 20px;
+  }
+
+  .BLogin {
+    padding: 10px 0;
+  }
+
+  .E-senha {
+    font-size: 10px;
+  }
+}

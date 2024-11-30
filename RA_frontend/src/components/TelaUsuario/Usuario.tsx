@@ -1,17 +1,17 @@
-import React from 'react';
+import React from "react";
 
+import LoggedHeader from "../../pages/LoggedHeader/Header"; // Header do usuário logado
+import Footer from "../../pages/Footer/Footer";
+import MainUsuario from "../../pages/MainUsuario/MainUsuario";
 
-import Footer from '../../pages/Footer/Footer';
-import Usuario from  '../../pages/TelaUsuario/Usuario';
-
-
-const UsuarioPage = () => {
+const UserPage: React.FC = () => {
   return (
     <div>
-      <Usuario />
+      <LoggedHeader /> {/* Header do usuário logado */}
+      <MainUsuario />
       <Footer />
     </div>
   );
-}
+};
 
-export default UsuarioPage;
+export default UserPage;

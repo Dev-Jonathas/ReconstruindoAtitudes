@@ -4,7 +4,6 @@ import logo from '../../assets/imgs/logo_ra1.png';
 import './Header.css';
 
 
-
 const Header: React.FC = () => {
 
   const scrollToTop = () => {
@@ -17,7 +16,7 @@ const Header: React.FC = () => {
 
   return (
     <header>
-      <div className="header-container">
+      <div className="header-logged">
         <div className="logo">
           <Link to="/">
             <img src={logo} alt="RA" />

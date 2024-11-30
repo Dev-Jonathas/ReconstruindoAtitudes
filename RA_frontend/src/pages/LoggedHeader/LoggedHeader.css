@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+
+.header-logged {
+  display: flex;
+  justify-content: space-between; /* Coloca a logo à esquerda e a caixa de perfil à direita */
+  align-items: center; /* Centraliza verticalmente */
+  border: 1px solid #cccccc;
+  background-color: #f8f8f8;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  display: flex;
+  align-items: center; /* Centraliza a logo verticalmente */
+  margin-left: 10px; /* Ajuste de margem para posicionar a logo */
+}
+
+.logo img {
+  width: 100px;
+margin-right: 1400px;
+  /* ajuste o tamanho conforme necessário */
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 20px; /* Alinha o menu ao lado esquerdo */
+  top: 60px; /* Ajuste a posição vertical se necessário */
+  background-color: white;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  width: 160px;
+ 
+  z-index: 100; /* Garante que o menu fique sobre outros elementos */
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center; /* Centraliza o conteúdo da lista */
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+  border-bottom: 1px solid #d1d0d0;
+  background: none;
+  cursor: pointer; 
+}
+
+.dropdown-button {
+  margin-left: 0; /* Remove margens extras */
+  margin-top: 5px;
+  background-color: #00356d;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0; /* Altera a cor ao passar o mouse */
+}
+
+.dropdown-button:hover {
+  background-color: #002b5c;
+}
+
+.menu-icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.line {
+  width: 100%;
+  height: 5px;
+  background-color: #333;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+
+/* Estilo para o elemento <ul> */
+ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Estilo para cada item <li> */
+li {
+  margin-left: 50px;
+  /* ajuste a margem conforme necessário */
+  margin-right: 50px;
+  font-size: 18px;
+
+}
+
+.link {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  font-family: 'Roboto Condensed', sans-serif;
+  /* Aplica a fonte ao container do header */
+
+}
+
+.link:hover {
+  text-decoration: none;
+  color: orange;
+
+}

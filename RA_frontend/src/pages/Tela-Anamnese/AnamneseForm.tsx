@@ -4,14 +4,19 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const AnamneseForm: React.FC = () => {
   const navigate = useNavigate();
+  const mentoradoID = localStorage.getItem('mentoradoId'); // Retrieve mentoradoId from localStorage
+
+  // Check if mentoradoId exists; if not, redirect to login
+  useEffect(() => {
+    if (!mentoradoID) {
+      alert('Você precisa estar logado para acessar este formulário!');
+      navigate('/login'); // Redirect to login page if not logged in
+    }
+  }, [mentoradoID, navigate]);
+
+  
   const [formData, setFormData] = useState({
-    nome: '',
-    dataNascimento: '',
-    genero: '',
-    estadocivil: '',
-    profissao: '',
-    email: '',
-    contato: '',
+    mentoradoId: mentoradoID, // Ensure mentoradoId is included
     pergunta1: '',
     pergunta2: '',
     pergunta3: '',
@@ -34,60 +39,54 @@ const AnamneseForm: React.FC = () => {
   });
 
   useEffect(() => {
-    // Adiciona a classe ao corpo da página
     document.body.classList.add('anamnese-page');
     window.scrollTo(0, 0);
     return () => {
-      // Remove a classe do corpo da página quando o componente for desmontado
       document.body.classList.remove('anamnese-page');
     };
   }, []);
 
-
-
-  const handleChange = (e: { target: { name: any; value: any; }; }) => {
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value
+      [name]: value,
     }));
-  }
-
-  
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const formIsValid = Object.values(formData).every(value => value !== '');
+    if (!mentoradoID) {
+      alert('Você precisa estar logado para enviar o formulário.');
+      return;
+    }
+
+    const formIsValid = Object.values(formData).every((value) => value !== '');
 
     if (formIsValid) {
-
-      fetch('https://rabackend-production-0e39.up.railway.app/agressor/cadastro', {
+      fetch('http://localhost:8080/anamnese/registrar', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          "Authorization" : `Bearer ${localStorage.getItem('token')}`, // Include token
         },
         body: JSON.stringify(formData),
       })
-        .then(response => response.json())
-        .then(data => {
+        .then((response) => response.json())
+        .then((data) => {
           console.log('Success:', data);
-          navigate('/agendamento', { state: { formData: data , agressorNome: formData.nome, agressorContato: formData.contato} });
+          navigate('/agendamento', { state: { formData: data } });
           localStorage.setItem('userData', JSON.stringify(formData));
         })
-        .catch(error => {
+        .catch((error) => {
           console.error('Error:', error.message || 'Failed to fetch');
           alert('Ocorreu um erro ao enviar o formulário. Por favor, tente novamente mais tarde.');
         });
 
+      // Reset form data after submission
       setFormData({
-        nome: '',
-        dataNascimento: '',
-        genero: '',
-        estadocivil: '',
-        profissao: '',
-        email: '',
-        contato: '',
+        mentoradoId: mentoradoID, // Ensure mentoradoId persists
         pergunta1: '',
         pergunta2: '',
         pergunta3: '',
@@ -108,12 +107,10 @@ const AnamneseForm: React.FC = () => {
         pergunta18: '',
         pergunta19: '',
       });
-
     } else {
       alert('Preencha todos os campos antes de enviar o formulário');
     }
   };
-
 
   return (
     <div className="anamnese-form">
@@ -122,53 +119,6 @@ const AnamneseForm: React.FC = () => {
       <form onSubmit={handleSubmit}>
         <div className="user-info">
 
-          <label>
-            Nome:
-            <input type="text" name="nome" value={formData.nome} onChange={handleChange} />
-          </label>
-
-          <label>
-            Data de Nascimento:
-            <input type="date" name="dataNascimento" value={formData.dataNascimento} onChange={handleChange} />
-          </label>
-
-
-          <label>
-            Gênero:
-            <select name="genero" value={formData.genero} onChange={handleChange}>
-              <option value="">Selecione</option>
-              <option value="Masculino">Masculino</option>
-              <option value="Feminino">Feminino</option>
-              <option value="Outro">Outro</option>
-              <option value="Prefiro não dizer">Prefiro não dizer</option>
-            </select>
-          </label>
-
-          <label>
-            Estado Civil:
-            <select name="estadocivil" value={formData.estadocivil} onChange={handleChange}>
-              <option value="">Selecione</option>
-              <option value="Solteiro(a)">Solteiro(a)</option>
-              <option value="Casado(a)">Casado(a)</option>
-              <option value="Divorciado(a)">Divorciado(a)</option>
-              <option value="Viúvo(a)">Viúvo(a)</option>
-            </select>
-          </label>
-
-          <label>
-            Profissão:
-            <input type="text" name="profissao" value={formData.profissao} onChange={handleChange} />
-          </label>
-
-          <label>
-            Contato:
-            <input type="text" name="contato" value={formData.contato} onChange={handleChange} />
-          </label>
-
-          <label>
-            Email:
-            <input type="email" name="email" value={formData.email} onChange={handleChange} />
-          </label>
 
         </div>
         <div className="questions">
@@ -296,7 +246,7 @@ const AnamneseForm: React.FC = () => {
 
         <div className="buttons-container">
           <button type="submit">Enviar</button>
-          <Link to="/">
+          <Link to="/user">
             <button className="back-button">Voltar</button>
           </Link>
         </div >
