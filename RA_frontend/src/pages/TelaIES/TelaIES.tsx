@@ -1,22 +1,19 @@
 import React, { useState, useEffect } from "react";
 import "./TelaIES.css";
-import instituicaoImagem from "../../assets/imgs/logoies.png";
 import { useNavigate } from "react-router-dom";
 
 interface Mentoria {
   horario: string;
-  mentorId: string; // ID do mentor
-  mentoradoId: string; // ID do mentorado (antes 'agressorId')
-  mentorNome: string; // Nome do mentor
-  mentoradoNome: string; // Nome do mentorado
+  mentorId: string;
+  mentoradoId: string;
+  mentorNome: string;
+  mentoradoNome: string;
 }
 
 const InstituicaoPage: React.FC = () => {
   const [mentorias, setMentorias] = useState<Mentoria[]>([]);
-  const [instituicaoNome] = useState("UNINASSAU Graças");
+  const [instituicaoNome, setInstituicaoNome] = useState("");
   const [mensagem] = useState("Bem-vindo à nossa plataforma de mentorias!");
-
-  // Estado para cadastro do mentor
   const [nomeMentor, setNomeMentor] = useState("");
   const [emailMentor, setEmailMentor] = useState("");
   const [bioMentor, setBioMentor] = useState("");
@@ -24,56 +21,95 @@ const InstituicaoPage: React.FC = () => {
 
   const navigate = useNavigate();
 
-  // Verifica se o token existe quando o componente é montado
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/login"); // Redireciona para o login se não houver token
+    const savedInstituicaoId = localStorage.getItem("instituicaoId");
+
+    if (!token || !savedInstituicaoId) {
+      navigate("/login");
+    } else {
+      fetchInstituicao(savedInstituicaoId);
     }
   }, [navigate]);
 
-  const fetchMentorias = async () => {
+  const fetchInstituicao = async (instituicaoId: string) => {
     try {
-      const response = await fetch("http://localhost:8080/mentoria/listar");
+      const response = await fetch(
+        `http://localhost:8080/instituicao/listar/${instituicaoId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       if (response.ok) {
         const data = await response.json();
-
-        const mentoriasComStatusNull = data.map((mentoria: any) => ({
-          mentorId: mentoria.mentor.id,
-          mentorNome: mentoria.mentor.nome,
-          mentoradoId: mentoria.mentorado.id,
-          mentoradoNome: mentoria.mentorado.nome,
-          horario: mentoria.horario.horario, // Corrige para pegar a string do DateTime
-        }));
-
-        setMentorias(mentoriasComStatusNull);
+        setInstituicaoNome(data.nome);
       } else {
-        console.error("Failed to fetch mentorias.");
+        console.error("Erro ao buscar nome da instituição.");
       }
     } catch (error) {
-      console.error("Error fetching mentorias:", error);
+      console.error("Erro ao buscar instituição:", error);
     }
   };
 
+  const fetchMentorias = async () => {
+    const instituicaoId = localStorage.getItem("instituicaoId");
+    
+    if (instituicaoId === null) {
+      console.error("InstituicaoId não encontrado");
+      return;
+    }
+    
+    const response = await fetch( `http://localhost:8080/mentoria/listar?instituicaoId=${instituicaoId}`);
+  
+    if (response.ok) {
+      const data = await response.json();
+    console.log("Resposta completa das mentorias:", data);
+      
+      // Filtrando mentorias de acordo com o id da instituição
+      const mentoriasFiltradas = data.filter((mentoria: any) => 
+        mentoria.mentor.instituicoes.some((instituicao: any) => instituicao.IesId === parseInt(instituicaoId))
+      ).map((mentoria: any) => ({
+        mentorId: mentoria.mentor.id,
+        mentorNome: mentoria.mentor.nome,
+        mentoradoId: mentoria.mentorado.id,
+        mentoradoNome: mentoria.mentorado.nome,
+        horario: mentoria.horario.horario,
+      }));
+      
+      console.log("Mentorias filtradas:", mentoriasFiltradas);
+      setMentorias(mentoriasFiltradas);
+    } else {
+      console.error("Erro ao buscar mentorias.");
+    }
+  };
+  
   useEffect(() => {
     fetchMentorias();
   }, []);
 
-  // Função de logoff que remove o token e redireciona para o login
   const handleLogoff = () => {
-    localStorage.removeItem("token"); // Limpar o token de autenticação do localStorage
-    navigate("/login"); // Redirecionar o usuário para a página de login
+    localStorage.removeItem("token");
+    localStorage.removeItem("instituicaoId");
+    navigate("/login");
   };
 
-  // Função para cadastrar mentor
   const handleCadastrarMentor = async (event: React.FormEvent) => {
     event.preventDefault();
+
+    const instituicaoId = localStorage.getItem("instituicaoId");
+    if (!instituicaoId) {
+      alert("Erro: ID da instituição não foi carregado.");
+      return;
+    }
 
     const mentorData = {
       nome: nomeMentor,
       email: emailMentor,
       bio: bioMentor,
       senha: senhaMentor,
+      instituicaoId: instituicaoId,
     };
 
     try {
@@ -81,19 +117,18 @@ const InstituicaoPage: React.FC = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`, // Adiciona o token do localStorage
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
         body: JSON.stringify(mentorData),
       });
 
       if (response.ok) {
         alert("Mentor cadastrado com sucesso!");
-        // Limpar os campos do formulário após o cadastro
         setNomeMentor("");
         setEmailMentor("");
         setBioMentor("");
         setSenhaMentor("");
-        fetchMentorias(); // Atualiza a lista de mentorias após cadastrar o mentor
+        fetchMentorias();
       } else {
         alert("Erro ao cadastrar o mentor!");
       }
@@ -109,11 +144,6 @@ const InstituicaoPage: React.FC = () => {
         Sair
       </button>
       <header className="instituicao-header">
-        <img
-          src={instituicaoImagem}
-          alt="Logo da Instituição"
-          className="instituicao-imagem"
-        />
         <h1>{instituicaoNome}</h1>
         <p className="instituicao-mensagem">{mensagem}</p>
       </header>
@@ -147,7 +177,7 @@ const InstituicaoPage: React.FC = () => {
             value={bioMentor}
             onChange={(e) => setBioMentor(e.target.value)}
             required
-            maxLength={100} // Limit to 100 characters
+            maxLength={100}
           />
         </div>
         <div>
@@ -167,32 +197,28 @@ const InstituicaoPage: React.FC = () => {
 
       <h2>Agenda de Mentorías da Instituição</h2>
       <div className="mentoria-list">
-        {mentorias.length > 0 ? (
-          mentorias.map((mentoria, index) => (
-            <div key={index} className="mentoria-item">
-              <p>
-                <strong>Mentor:</strong> {mentoria.mentorNome}
-              </p>
-              <p>
-                <strong>Mentorado:</strong> {mentoria.mentoradoNome}
-              </p>
-              <p>
-                <strong>Data e Hora:</strong>{" "}
-                {new Date(mentoria.horario).toLocaleString("pt-BR", {
-                  weekday: "long",
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                  hour: "2-digit",
-                  minute: "2-digit",
-                })}
-              </p>
-            </div>
-          ))
-        ) : (
-          <p>Nenhuma mentoria agendada.</p>
-        )}
+  {mentorias.length > 0 ? (
+    mentorias.map((mentoria, index) => (
+      <div key={index} className="mentoria-item">
+        <p>
+          Mentor: {mentoria.mentorNome} - Mentorado: {mentoria.mentoradoNome} - 
+          Data e Hora:{" "}
+          {new Date(mentoria.horario).toLocaleString("pt-BR", {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+          })}
+        </p>
       </div>
+    ))
+  ) : (
+    <p>Nenhuma mentoria agendada.</p>
+  )}
+</div>
+
     </div>
   );
 };

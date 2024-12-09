@@ -20,7 +20,7 @@ const LoggedHeader: React.FC = () => {
   }, [navigate]);
 
   return (
-    <header className="header-container">
+    <header className="header-logged">
       <nav className="logo">
           <img src={logo} alt="RA" />
     

@@ -16,7 +16,7 @@ const Header: React.FC = () => {
 
   return (
     <header>
-      <div className="header-logged">
+      <div className="header-container">
         <div className="logo">
           <Link to="/">
             <img src={logo} alt="RA" />

@@ -1,203 +1,108 @@
-/* Ajustando o layout e as dimensões para melhorar o espaçamento e o comportamento do footer */
-
+/* Estilização principal do container */
 .mentor-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: auto; /* Permite que o container se ajuste ao conteúdo */
-  min-height: 100vh; /* Garante que o container ocupe pelo menos a altura total da tela */
-  padding-bottom: 20px; /* Adiciona espaçamento inferior para não sobrepor o footer */
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
 }
 
-.mentor-container h2 {
-  color: #000000;
-  font-size: 30px;
+h2 {
+  font-size: 24px;
+  color: #333;
   margin-bottom: 20px;
-  font-family: "Lobster", cursive;
 }
 
-.mentor-cards {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap; /* Permite que os cards se ajustem em várias linhas, se necessário */
-  justify-content: space-evenly; /* Ajusta o espaçamento entre os cards */
-  width: 100%;
+/* Estilização do seletor de mentores */
+.mentor-select,
+.hour-select {
+  margin-bottom: 20px;
+  text-align: left;
 }
 
-.mentor-card {
-  width: 180px; /* Diminuindo a largura dos cards */
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  position: relative;
-  z-index: 1;
-  margin-bottom: 20px; /* Espaço entre os cards */
-}
-
-.mentor-card:hover {
-  z-index: 5;
-  transform: translateY(-5px);
-}
-
-.mentor-card img {
-  width: 30%;
-  height: 100px;
-  margin-left: 10px;
-  margin-top: 10px;
-  object-fit: cover;
-  border-radius: 8px;
-  object-fit: cover;
-  border: 2px solid #ccc;
-  margin-bottom: 15px;
-  transition: transform 0.3s ease;
-}
-
-.mentor-info {
-  padding: 15px;
-}
-
-.mentor-info h3 {
-  margin-bottom: 10px;
-  font-size: 20px;
-}
-
-.mentor-info p {
-  font-size: 18px;
-  line-height: 1.5;
-  color: #000000;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.agendar-button {
+label {
+  font-size: 16px;
+  color: #555;
   display: block;
+  margin-bottom: 8px;
+}
+
+select {
   width: 100%;
   padding: 10px;
-  margin-top: 10px;
-  background-color: #00356d;
-  color: white;
-  border: none;
-  border-radius: 4px;
   font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Estilização do botão de confirmação */
+.confirm-button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #00356d;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.agendar-button:hover {
+.confirm-button:hover {
   background-color: #00509d;
 }
 
-.hour-select,
-.date-select {
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 16px;
+.confirm-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
-
-.hour-select label,
-.date-select label {
-  font-weight: bold;
-  margin-bottom: 8px;
-}
-
-.hour-select select,
-.date-select input[type="date"] {
-  width: 150px;
-  padding: 8px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-
 
 /* Responsividade */
 
-@media screen and (max-width: 390px), screen and (max-width: 414px) {
-  .mentor-container h2 {
-    font-size: 20px;
-    margin-top: 40px;
-  }
-
-  .mentor-cards {
-    margin-left: 5px;
-    margin-right: 5px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 15px;
-  }
-
-  .mentor-card {
-    width: calc(50% - 10px); /* Ajustando a largura dos cards */
-    text-align: center;
-    padding: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .mentor-card img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-  }
-
-  .mentor-info h3 {
-    font-size: 15px;
-    margin-bottom: 5px;
-  }
-
-  .mentor-info p {
-    font-size: 10px;
-  }
-
-  .agendar-button {
-    margin-top: 15px;
-    font-size: 10px;
-    width: 60%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 20px;
-    position: relative;
-    z-index: 10;
-  }
-
-  .hour-select {
-    margin-top: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 60%;
-    font-size: 13px;
-  }
-
-  .hour-select select {
-    width: 100%;
-  }
-
+/* Telas menores que 768px (mobile) */
+@media (max-width: 768px) {
   .mentor-container {
-    overflow-y: auto;
-    max-height: 100vh;
+    margin: 20px;
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  select {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .confirm-button {
+    font-size: 14px;
+    padding: 10px 15px;
   }
 }
 
-@media screen and (min-width: 769px) and (max-width: 1444px) {
-  .mentor-card {
-    width: 250px; /* Ajustando a largura para dispositivos médios */
+/* Telas maiores que 1200px (desktop grande) */
+@media (min-width: 1200px) {
+  .mentor-container {
+    max-width: 1000px;
   }
 
-  .mentor-container h2 {
-    margin-bottom: 100px;
-    margin-top: 400px;
+  h2 {
+    font-size: 28px;
   }
-}
 
-@media screen and (min-width: 1445px) {
-  .mentor-card {
-    width: 300px;
+  .confirm-button {
+    font-size: 18px;
+    padding: 14px 25px;
   }
 }

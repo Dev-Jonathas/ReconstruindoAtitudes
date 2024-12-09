@@ -2,7 +2,7 @@
 
 Este é o repositório para o site de mentoria, desenvolvido com um frontend em **React** e **TypeScript**, utilizando **JavaScript**, **Fetch API**, **CSS** e **HTML**. O backend é desenvolvido em **Java Spring**, com autenticação usando **JWT** e segurança aplicada com **Spring Security**. O banco de dados utilizado é o **MySQL**, e a API pode ser testada com **Postman**.
 
-## Tecnologias Utilizadas
+## Tecnologias Utilizadas 💻
 
 ### Frontend
 - **React** (para criação da interface do usuário)
