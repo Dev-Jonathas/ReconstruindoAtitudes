@@ -27,7 +27,7 @@ Este é o repositório para o site de mentoria, desenvolvido com um frontend em 
 
 Para acessar o site de mentoria, basta visitar o seguinte link:
 
-[**Mentoria Site**](https://link-do-seu-site.com)
+[**Mentoria Site**](https://reconstruindoatitudes.netlify.app/)
 
 ### 2. Clonando o repositório (opcional)
 
